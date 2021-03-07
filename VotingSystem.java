@@ -85,7 +85,7 @@ class Voter extends Candidate{
 	
 	public void ViewCandidates(){
 		HashMap<String, Integer> candidates = new HashMap<String, Integer>();
-		candidates.put(super.getCandidatename(),getPoliticalparty());
+		candidates.put(super.getCandidatename(),super.getCandidatenumber());
 	}
 }
 
