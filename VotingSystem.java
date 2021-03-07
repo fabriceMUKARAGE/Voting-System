@@ -157,7 +157,7 @@ public class VotingSystem {
 	for(int i=0;i<number;i++){
 		System.out.println("Enter the name of candidate: ");
 		int name=input.nextLine(); 
-		System.out.println("Enter the number of candidate: ");
+		System.out.println("Enter the candidate number: ");
 		int num=input.nextInt(); 
 		System.out.println("Enter the politcal party: ");
 		int party=input.nextLine(); 
