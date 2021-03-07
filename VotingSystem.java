@@ -4,8 +4,8 @@
 abstract class PullingStation{
 	private String stationname;
 	
-	//Constructor of Person
-	public Voter(String name) {
+	//Constructor of pulling station
+	public PullingStation(String stationname) {
 		this.stationname=stationname;
 	}
 
@@ -17,7 +17,7 @@ abstract class PullingStation{
 	public void setStationname(String stationname) {
 		this.stationname=stationname;
 	}
-	public  CollacteVotes(){
+	public void CollacteVotes(){
 	
 	}
 
@@ -33,11 +33,11 @@ class Voter extends Candidate{
 	private int age;
 	
 	//Constructor of Person
-	public Voter(String name, long id, String gender, int age) {
+	Voter(String name, long id, String gender, int age) {
 		this.name=name;
 		this.age=age;
 		this.gender=gender;
-		this.id=id;
+		this.id=id; 
 	}
 	
 	//getter methods			
@@ -75,7 +75,18 @@ class Voter extends Candidate{
         	return "Name: " + getName()+", The Age: "+getAge()+", ID: "+getId()+", gender: "+getGender();
     }	
 
-
+	public void CastVote(){
+	
+	}
+	
+	public void VerifyRegistration(){
+	
+	}
+	
+	public void ViewCandidates(){
+		HashMap<String, Integer> candidates = new HashMap<String, Integer>();
+		candidates.put(super.getCandidatename(),getPoliticalparty());
+	}
 }
 
 //interface
@@ -117,10 +128,12 @@ interface NationalElectoralHeadquarters{
 		}
 		public void setCandidatename(String candidatename) {
 			this.candidatename=candidatename;	 
- }
+ 		}
 		public String toString() {
         	return "Candidate name: " + getCandidatename()+", Candidate number: "+getCandidatenumber()+", Political Party: "+getPoliticalparty();
-    }	
+    		}	
+	 
+}
 
 //Regional electoraloffice class
 public class RegionalElectoralOffice{
