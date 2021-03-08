@@ -73,8 +73,43 @@ class Voter extends Candidate{
 	// tostring() method which returns the message needed to be displayed
 	public String toString() {
         	return "Name: " + getName()+", The Age: "+getAge()+", ID: "+getId()+", gender: "+getGender();
-    }	
+    	}	
 
+	public void CastVote(){
+	
+	}
+	
+	public void VerifyRegistration(){
+		try{
+			// 
+      			// create a mysql database connection 
+      			String myDriver = "org.gjt.mm.mysql.Driver";
+      			String myUrl = "jdbc:mysql://localhost/test";
+      			Class.forName(myDriver);
+      			Connection connect = DriverManager.getConnection(myUrl, "root", "Agahozo12");
+      
+      			Statement enter = connect.createStatement();
+			ResultSet verify    = enter.executeQuery(sql);
+            
+            		// loop to verify if the voter is registered in the database by displaying only Voter's name and id
+            		while (verify.next()) {
+               		 System.out.println(verify.getString("name") +  "\t" + 
+                                   verify.getInt("Id")+"\t" +verify.getInt("age")+"\t" +verify.getString("gender"));
+
+      			connect.close();
+    		}
+    		catch (Exception e){
+      			System.err.println("Voter not found!");
+			System.err.println(e.getMessage());
+      			
+    		}
+	
+	}
+	
+	public void ViewCandidates(){
+		HashMap<String, Integer> candidates = new HashMap<String, Integer>();
+		candidates.put(super.getCandidatename(),getPoliticalparty());
+	}
 
 }
 
