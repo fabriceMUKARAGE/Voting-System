@@ -136,6 +136,59 @@ public class DistrictElectoralOffice extends PullingStation{
 
 public class VotingSystem {
 	public static void main(String[] arg) {
+		//creating tree for National electoral headquaters, District electoral offices,Region electoral offices and Polling Stations
+		Node treeRootNode = new Node(null);
+		Voter voter =new Voter("nameexample", 454444, Male, 24);
+		System.out.print("National electoral headquater! ");
+		treeRootNode.getNationalheadquatersname();
+
+		// adding RegionElectoral office to root node
+		Scanner input = new Scanner(System.in); //scanner to scan the country
+		System.out.print("Number of Region Electoral offices in the Nation: ");
+		int number= input.nextInt();
+		for(int i=1;i<=number;i++){
+				Scanner inputt = new Scanner(System.in); //scanning the input
+				System.out.print("Enter the names of Region Electoral Office"+" "+i+": ");
+				String region= inputt.nextLine(); //entering the Regions	
+				Node childNode1= addChild(treeRootNode, region);
+			
+			// adding District electoral offices to the region nodes created above
+			System.out.print("Number of District electoral offices in this Religion: ");
+			int count= input.nextInt();
+			for(int j=1;j<=count;j++){
+					Scanner enter = new Scanner(System.in); //scanning the input
+					System.out.print("insert a name of District region office "+j+": ");
+					String districtelectoral= enter.nextLine(); //entering the district electoral office
+					Node childNode2= addChild(childNode1, districtelectoral);
+			
+			// adding the Pulling stations to the District electoral offices
+				System.out.print("Number of Polling stations in the District electoral offices : ");
+				int counting= input.nextInt();		
+				for(int k=1;k<=counting;k++){
+						Scanner enterr = new Scanner(System.in); //scanning the input
+						System.out.print("insert a name of Polling Station "+k+": ");
+						String pullingstation= enterr.nextLine();
+						Node childNode3= addChild(childNode2, pollingstation);
+
+
+				}
+			}
+		}
+		
+		private static Node addChild(Node parent, String ElectoralHeadquarters) {
+			Node node = new Node(parent);
+			node.setElectoralHeadquarters(ElectoralHeadquarters);
+			parent.getChildren().add(node);
+	 
+			return node;
+	  }
+  
+	 //The function that does the traversal and prints out the tree
+	 private static void printTree(Node node, String results) {
+		   System.out.println(results + node.getElectoralHeadquarters());
+		   for (Node each : node.getChildren()) {
+				printTree(each, results+ results );
+		   }
 		
 	}
 }
